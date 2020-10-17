@@ -1,9 +1,9 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+# Server Side Calculator
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+Created two inputs, where the user can enter in a number, click what math operation they want to use, and it will calculate and show the answer below. The calculator also keeps track of all the math operations and answers the user has submit. The user can click the C button to clear all current input values and/or math operator.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+## Built with
+
+Node, Express, and JQuery

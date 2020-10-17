@@ -43,7 +43,7 @@ function render(resultHistory) {
 
     for (let problemResults of round) {
       $('.js-result').empty();
-      $('.js-result').append(`${problemResults.result}`);
+      $('.js-result').append(`= ${problemResults.result}`);
       $results.append(
         `<li>${problemResults.num1} ${problemResults.math} ${problemResults.num2} = ${problemResults.result}</li>`
       );
