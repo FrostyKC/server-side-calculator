@@ -29,6 +29,8 @@ app.post('/problems', (req, res) => {
   // calculate problem
   for (let i = 0; i < problemData.length; i++) {
     const problem = problemData[i];
+    problem.num1 = parseInt(problem.num1);
+    problem.num2 = parseInt(problem.num2);
     if (problem.math === '+') {
       problem.result = problem.num1 + problem.num2;
     } else if (problem.math === '-') {
