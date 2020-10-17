@@ -13,15 +13,17 @@ app.use(express.static('public'));
 // POST for receiving problems
 app.post('/problems', (req, res) => {
   // problem data
-  // [
-  //   {
-  //     num1: '',
-  //     math: '',
-  //     num2: '',
-  //   }
-  // ]
-  const problemData = req.body;
-  console.log(problemData);
+  // {
+  //   problems: [
+  //     {
+  //       num1: '',
+  //       math: '',
+  //       num2: '',
+  //     }
+  //   ]
+  // }
+  const problemData = req.body.problems;
+  console.log('problem data', problemData);
   const results = []; // math problem
 
   // calculate problem

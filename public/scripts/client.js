@@ -8,6 +8,7 @@ function onReady() {
 }
 
 function clickHandlerSubmit() {
+  console.log('in submit');
   const problems = [
     {
       num1: $('.js-inpt-num1').val(),
@@ -15,6 +16,7 @@ function clickHandlerSubmit() {
       num2: $('.js-inpt-num2').val(),
     },
   ];
+  postProblems(problems);
 }
 
 function selectMath() {
@@ -24,10 +26,11 @@ function selectMath() {
 // API / server calls
 
 function postProblems(problems) {
+  console.log('sending', problems);
   $.ajax({
     type: 'POST',
     url: '/problems',
-    data: problems,
+    data: { problems: problems },
   })
     .then(function (response) {
       console.log('POST of problems:', response);
