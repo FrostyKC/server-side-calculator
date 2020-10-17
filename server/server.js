@@ -29,6 +29,12 @@ app.post('/problems', (req, res) => {
     const problem = problemData[i];
     if (problem.math === '+') {
       problem.result = problem.num1 + problem.num2;
+    } else if (problem.math === '-') {
+      problem.result = problem.num1 - problem.num2;
+    } else if (problem.math === '*') {
+      problem.result = problem.num1 * problem.num2;
+    } else if (problem.math === '/') {
+      problem.result = problem.num1 / problem.num2;
     }
     results.push(problem);
   }
