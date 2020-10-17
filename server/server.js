@@ -22,7 +22,7 @@ app.post('/problems', (req, res) => {
   //   ]
   // }
   const problemData = req.body.problems;
-  console.log('problem data', problemData);
+  // console.log('problem data', problemData);
   const results = []; // math problem with answers
 
   // calculate problem
@@ -44,7 +44,7 @@ app.post('/problems', (req, res) => {
   }
   //pushing all results into history array
   history.push(results);
-  console.log(history);
+  // console.log(history);
 
   res.sendStatus(200);
 });

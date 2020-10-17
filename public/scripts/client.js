@@ -17,7 +17,7 @@ function clearInput() {
 }
 
 function clickHandlerSubmit() {
-  console.log('in submit');
+  // console.log('in submit');
   const problems = [
     {
       num1: $('.js-inpt-num1').val(),
@@ -34,7 +34,7 @@ function selectMath() {
 }
 
 function render(resultHistory) {
-  console.log(resultHistory);
+  // console.log(resultHistory);
   const $results = $('.js-results');
 
   $results.empty();
