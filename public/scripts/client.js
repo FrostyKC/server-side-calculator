@@ -18,13 +18,11 @@ function clearInput() {
 
 function clickHandlerSubmit() {
   // console.log('in submit');
-  const problems = [
-    {
-      num1: $('.js-inpt-num1').val(),
-      math: $('.mathSelected').val(),
-      num2: $('.js-inpt-num2').val(),
-    },
-  ];
+  const problems = {
+    num1: $('.js-inpt-num1').val(),
+    math: $('.mathSelected').val(),
+    num2: $('.js-inpt-num2').val(),
+  };
   postProblems(problems);
 }
 
@@ -39,15 +37,12 @@ function render(resultHistory) {
 
   $results.empty();
   for (let i = 0; i < resultHistory.length; i++) {
-    const round = resultHistory[i];
-
-    for (let problemResults of round) {
-      $('.js-result').empty();
-      $('.js-result').append(`= ${problemResults.result}`);
-      $results.append(
-        `<li>${problemResults.num1} ${problemResults.math} ${problemResults.num2} = ${problemResults.result}</li>`
-      );
-    }
+    const problemResults = resultHistory[i];
+    $('.js-result').empty();
+    $('.js-result').append(`= ${problemResults.result}`);
+    $results.append(
+      `<li>${problemResults.num1} ${problemResults.math} ${problemResults.num2} = ${problemResults.result}</li>`
+    );
   }
 }
 
@@ -55,19 +50,23 @@ function render(resultHistory) {
 
 function postProblems(problems) {
   // console.log('sending', problems);
-  $.ajax({
-    type: 'POST',
-    url: '/problems',
-    data: { problems: problems },
-  })
-    .then(function (response) {
-      // console.log('POST of problems:', response);
-      getHistory();
+  if (problems.num1 && problems.math && problems.num2) {
+    $.ajax({
+      type: 'POST',
+      url: '/problems',
+      data: problems,
     })
-    .catch(function (err) {
-      console.log(err);
-      alert('it broke');
-    });
+      .then(function (response) {
+        // console.log('POST of problems:', response);
+        getHistory();
+      })
+      .catch(function (err) {
+        console.log(err);
+        alert('it broke');
+      });
+  } else {
+    alert('Enter all Values!');
+  }
 }
 
 function getHistory() {

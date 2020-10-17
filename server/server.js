@@ -13,37 +13,27 @@ app.use(express.static('public'));
 app.post('/problems', (req, res) => {
   // problem data
   // {
-  //   problems: [
-  //     {
-  //       num1: '',
-  //       math: '',
-  //       num2: '',
-  //     }
-  //   ]
+  //   num1: '',
+  //   math: '',
+  //   num2: '',
   // }
-  const problemData = req.body.problems;
-  // console.log('problem data', problemData);
-  const results = []; // math problem with answers
+  const problemData = req.body;
+  // console.log('problem data', problemData)
 
   // calculate problem
-  for (let i = 0; i < problemData.length; i++) {
-    const problem = problemData[i];
-    problem.num1 = parseFloat(problem.num1);
-    problem.num2 = parseFloat(problem.num2);
-    if (problem.math === '+') {
-      problem.result = problem.num1 + problem.num2;
-    } else if (problem.math === '-') {
-      problem.result = problem.num1 - problem.num2;
-    } else if (problem.math === '*') {
-      problem.result = problem.num1 * problem.num2;
-    } else if (problem.math === '/') {
-      problem.result = problem.num1 / problem.num2;
-    }
-    //pushing each problem into results array
-    results.push(problem);
+  problemData.num1 = parseFloat(problemData.num1);
+  problemData.num2 = parseFloat(problemData.num2);
+  if (problemData.math === '+') {
+    problemData.result = problemData.num1 + problemData.num2;
+  } else if (problemData.math === '-') {
+    problemData.result = problemData.num1 - problemData.num2;
+  } else if (problemData.math === '*') {
+    problemData.result = problemData.num1 * problemData.num2;
+  } else if (problemData.math === '/') {
+    problemData.result = problemData.num1 / problemData.num2;
   }
-  //pushing all results into history array
-  history.push(results);
+  //pushing all problem data into history array
+  history.push(problemData);
   // console.log(history);
 
   res.sendStatus(200);
