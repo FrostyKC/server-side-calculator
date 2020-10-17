@@ -5,7 +5,15 @@ function onReady() {
 
   $('.js-btn-sumt').on('click', clickHandlerSubmit);
   $('.math').on('click', selectMath);
+  $('.js-btn-clear').on('click', clearInput);
   getHistory();
+}
+
+//clears inputs and math operator
+function clearInput() {
+  $('.js-inpt-num1').val('');
+  $('.js-inpt-num2').val('');
+  $('.math').removeClass('mathSelected');
 }
 
 function clickHandlerSubmit() {
@@ -21,7 +29,8 @@ function clickHandlerSubmit() {
 }
 
 function selectMath() {
-  $(this).toggleClass('mathSelected');
+  $('.math').removeClass('mathSelected');
+  $(this).addClass('mathSelected');
 }
 
 function render(resultHistory) {
